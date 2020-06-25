@@ -1,0 +1,196 @@
+{
+	"title": "System Information",
+	"$schema": "http://json-schema.org/draft-07/schema#",
+	"description": "Basic description of management information system.",
+	"type": "object",
+	"required": [
+		"System",
+		"Setup",
+		"Connection"
+	],
+	"properties": {
+		"System": {
+			"description": "Information about system design.",
+			"type": "object",
+			"required": [
+				"Title",
+				"SubTitle",
+				"organization",
+				"Version",
+				"Copyright"
+			],
+			"properties": {
+				"Title": {
+					"description": "System name and title displayed on the cover.",
+					"type": "string",
+					"default": "Generic Generator"
+				},
+				"SubTitle": {
+					"description": "System subtitle displayed on the cover.",
+					"type": "string",
+					"default": "Admin FrontEnd"
+				},
+				"organization": {
+					"description": "System developer name.",
+					"type": "string"
+				},
+				"Version": {
+					"description": "System Version.",
+					"type": "string"
+				},
+				"Copyright": {
+					"description": "System copyright notice.",
+					"type": "string"
+				}
+			}
+		},
+		"Setup": {
+			"description": "System interface settings.",
+			"type": "object",
+			"required": [
+				"Logo",
+				"Banner",
+				"Login",
+				"System tone",
+				"Menu Style",
+				"File Upload and Download Path"
+			],
+			"properties": {
+				"Logo": {
+					"description": "System logo.",
+					"type": "object",
+					"properties": {
+						"Image": {
+							"description": "Image path of logo.",
+							"type": "string"
+						},
+						"Text": {
+							"description": "Text of logo.",
+							"type": "string"
+						},
+						"Foreground": {
+							"description": "Logo foreground color.",
+							"type": "string"
+						},
+						"Background": {
+							"description": "Logo background color.",
+							"type": "string"
+						}
+					}
+				},
+				"Banner": {
+					"description": "System logo.",
+					"type": "object",
+					"properties": {
+						"Text": {
+							"description": "Text path of Banner.",
+							"type": "string"
+						},
+						"Foreground": {
+							"description": "Banner foreground color.",
+							"type": "string"
+						},
+						"Background": {
+							"description": "Banner background color.",
+							"type": "string"
+						},
+						"Shadow": {
+							"description": "Banner Shadow colorr.",
+							"type": "string"
+						}
+					}
+				},
+				"Login": {
+					"description": "Login infomation.",
+					"type": "object",
+					"properties": {
+						"background picture": {
+							"description": "Login background picture path.",
+							"type": "string"
+						},
+						"interface size": {
+							"description": "Login interface size, large, medium and small.",
+							"type": "string",
+							"enum": [
+								"large",
+								"medium",
+								"small"
+							]
+						}
+					}
+				},
+				"System tone": {
+					"description": "Specifies the hue used by the system.",
+					"type": "string",
+					"enum": [
+						"#FFAAEE",
+						"#FFBBCC",
+						"#C0FFB0",
+						"#E0A0FF",
+						"#E0E0E0",
+						"#FF0000",
+						"#2060B0",
+						"#00E000"
+					]
+				},
+				"System font": {
+					"description": "Specifies the font used by the system.",
+					"type": "string",
+					"default": "Arial"
+				},
+				"Menu Style": {
+					"description": "Specifies the Menu style.",
+					"type": "string",
+					"enum": [
+						"Tree",
+						"Drop-Down Menu",
+						"Slide Menu"
+					]
+				},
+				"File Upload and Download Path": {
+					"description": "Specifies the Menu style.",
+					"type": "string"
+				}
+			}
+		},
+		"Connection": {
+			"description": "Parameters for barcode detection",
+			"type": "object",
+			"required": [
+				"default Connection"
+			],
+			"properties": {
+				"default Connection": {
+					"description": "Default database connection string",
+					"type": "string"
+				},
+				"other Connection": {
+					"description": "Other database connection string",
+					"type": "string"
+				},
+				"AliYun OSS Connection": {
+					"description": "Aliyun Object storage system.",
+					"type": "object",
+					"properties": {
+						"Endpoint": {
+							"description": "Access address.",
+							"type": "string"
+						},
+						"Access ID": {
+							"description": "Access ID.",
+							"type": "string"
+						},
+						"Access Key Secret": {
+							"description": "Access  Key Secret.",
+							"type": "string"
+						},
+						"Bucket": {
+							"description": "Access  Key Secret.",
+							"type": "string"
+						}
+					}
+				}
+			}
+		}
+	}
+}

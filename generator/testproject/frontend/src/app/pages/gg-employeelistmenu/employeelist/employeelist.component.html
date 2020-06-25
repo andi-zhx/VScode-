@@ -1,0 +1,14 @@
+
+<nb-card>
+  <nb-card-header>
+    员工信息表
+  </nb-card-header>
+
+  <nb-card-body><div class="buttons-row">
+    <button nbButton status="info" shape="rectangle" size="medium" (click)="export()"  hero>导出 </button></div>
+    <ng2-smart-table class="example-smart-table" [settings]="settings" [source]="source"
+      (rowSelect)	="setSelecRow($event)">
+    </ng2-smart-table>
+  </nb-card-body>
+</nb-card>
+    

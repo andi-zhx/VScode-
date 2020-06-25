@@ -1,0 +1,169 @@
+{
+    "Append": {
+        "Bar": "Append",
+        "Icon": "grid-outline",
+        "SubMenu": {
+            "AppendSubMenu1": {
+                "Function": "Append",
+                "Title": "Append Sub Menu1",
+                "MainTable": {
+                    "Name": "tab1",
+                    "ReadOnly": false,
+                    "Select": "SELECT F1,F2,F3,F4 FROM tab1",
+                    "Fields": [],
+                    "CalculationFormula": [
+                        "F4=F2 * F3"
+                    ]
+                },
+                "MainDictionaryTable": {
+                    "Fields": [],
+                    "Name": "tab4",
+                    "Select": "",
+                    "MainDictionaryTableSetFields": ["F2", "F3"],
+                    "MainTableGetFields": ["F!", "F2"]
+                }
+            },
+            "AppendSubMenu2": {
+                "Function": "Append",
+                "Title": "Append Sub Menu2",
+                "MainTable": {
+                    "Name": "tab2",
+                    "Readonly": "readonly",
+                    "Select": "SELECT F1,F2,F3,F4 FROM tab2",
+                    "Fields": {},
+                    "CalculationFormula": [
+                        "F4=F2 * F3"
+                    ]
+                }
+            }
+        }
+    },
+    "Edit": {
+        "Bar": "Edit",
+        "Icon": [
+            0,
+            0
+        ],
+        "SubMenu": {
+            "EditSubMenu1": {
+                "Function": "Edit",
+                "Title": "Edit Sub Menu1",
+                "MainTable": {
+                    "Name": "tab1",
+                    "Readonly": "readonly",
+                    "select": "",
+                    "Fields": [],
+                    "CalculationFormula": [
+                        "F4=F2 * F3"
+                    ]
+                },
+                "EChart": {
+                    "EChartsType": "Bar",
+                    "MarkField": "",
+                    "ValueFields": []
+                }
+            }
+        }
+    },
+    "Query": {
+        "Bar": "Query",
+        "Icon": [
+            0,
+            0
+        ],
+        "SubMenu": {
+            "QuerySubMenu1": {
+                "Function": "Query",
+                "Title": "Query Sub Nenu1",
+                "MainTable": {
+                    "name": "tab1",
+                    "Select": "select * from tab1"
+                }
+            },
+            "QuerySubMenu2": {
+                "Function": "Query",
+                "Title": "",
+                "MainTable": {
+                    "name": "tab2",
+                    "select": "select * from tab2"
+                }
+            }
+        }
+    },
+    "EChart": {
+        "Bar": "EChart",
+        "Icon": [
+            0,
+            0
+        ],
+        "SubMenu": {
+            "EChartssubmenu1": {
+                "Function": "ECharts",
+                "Title": "EChart",
+                "MainTable": {
+                    "Name": "tab1",
+                    "Select": "select * from tab1",
+                    "ValueFields": [
+                        "F3"
+                    ],
+                    "MarkField": "F4",
+                    "EChartsType": "Column"
+                }
+            },
+            "EChartssubmenu2": {
+                "Title": "2",
+                "Function": "ECharts",
+                "MainTable": {
+                    "Name": "tab2",
+                    "Select": "",
+                    "ReadOnly": true
+                },
+                "EChart": {
+                    "EChartsType": "Area",
+                    "MarkField": "F1",
+                    "ValueFields": [
+                        "F4"
+                    ]
+                }
+            }
+        }
+    },
+    "Map": {
+        "Bar": "Map",
+        "Icon": [
+            100,
+            0
+        ],
+        "SubMenu": {
+            "MapSubMenu1": {
+                "Function": "Map",
+                "Title": "MapSubMenu1",
+                "MainTable": {
+                    "Name": "tab1",
+                    "Select": "select * from tab1",
+                    "MapType": "General",
+                    "Longitude": "lon",
+                    "Latitude": "lat",
+                    "LabelName": "name"
+                },
+                "Map": {
+                    "MapType": "General",
+                    "Longitude": "F3",
+                    "Latitude": "F4"
+                }
+            },
+            "MapSubMenu2": {
+                "Function": "Map",
+                "MainTable": {
+                    "Name": "tab2",
+                    "ReadOnly": true,
+                    "Select": ""
+                },
+                "Map": {
+                    "Longitude": "",
+                    "MapType": "Tagging"
+                }
+            }
+        }
+    }
+}

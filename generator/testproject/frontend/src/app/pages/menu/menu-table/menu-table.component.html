@@ -1,0 +1,20 @@
+<nb-layout>
+  <!-- <nb-layout-header>Awesome Company</nb-layout-header>
+  <nb-layout-column class=".col-6 .col-md-4"><nb-list>
+    <nb-list-item *ngFor="let user of users">
+      <nb-user [name]="user.name" [title]="user.title">
+      </nb-user>
+    </nb-list-item>
+  </nb-list></nb-layout-column>
+  <nb-layout-column class=".col-12 .col-sm-6 .col-md-8">Right column</nb-layout-column> -->
+  <nb-layout-header>Awesome Company</nb-layout-header>
+  <nb-layout-column>
+  <nb-sidebar><nb-list>
+    <nb-list-item *ngFor="let user of users">
+      <nb-user [name]="user.name" [title]="user.title">
+      </nb-user>
+    </nb-list-item>
+  </nb-list></nb-sidebar>
+</nb-layout-column>
+  <nb-layout-column class="colored-column-success">Layout Content</nb-layout-column>
+</nb-layout>

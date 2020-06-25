@@ -1,0 +1,7 @@
+{
+    "properties": [{
+        "name": "gg",
+        "type": "com.gen.springbootserver.GgProperties",
+        "description": "A description for 'gg'"
+    }]
+}

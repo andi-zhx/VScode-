@@ -1,0 +1,386 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gen.springbootserver.mybatis.dao.MenuMapper">
+  <resultMap id="BaseResultMap" type="com.gen.springbootserver.mybatis.model.Menu">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="sort" jdbcType="INTEGER" property="sort" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="icon" jdbcType="VARCHAR" property="icon" />
+    <result column="link" jdbcType="VARCHAR" property="link" />
+    <result column="is_outer_link" jdbcType="BIT" property="isOuterLink" />
+    <result column="permission" jdbcType="VARCHAR" property="permission" />
+    <result column="hidden" jdbcType="BIT" property="hidden" />
+    <result column="createtime" jdbcType="TIMESTAMP" property="createtime" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="is_default" jdbcType="BIT" property="isDefault" />
+    <result column="parentname" jdbcType="VARCHAR" property="parentname" />
+    <result column="is_home" jdbcType="BIT" property="isHome" />
+    <result column="is_group" jdbcType="BIT" property="isGroup" />
+    <result column="is_delete" jdbcType="BIT" property="isDelete" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, sort, name, title, icon, link, is_outer_link, permission, hidden, createtime, 
+    type, is_default, parentname, is_home, is_group, is_delete
+  </sql>
+  <select id="selectByExample" parameterType="com.gen.springbootserver.mybatis.model.MenuExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from menu
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+    <if test="limitStart >= 0 and limitEnd > 0">
+      limit ${limitStart},${limitEnd}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from menu
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from menu
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.gen.springbootserver.mybatis.model.MenuExample">
+    delete from menu
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.gen.springbootserver.mybatis.model.Menu">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into menu (sort, name, title, 
+      icon, link, is_outer_link, 
+      permission, hidden, createtime, 
+      type, is_default, parentname, 
+      is_home, is_group, is_delete)
+    values (#{sort,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{title,jdbcType=VARCHAR}, 
+      #{icon,jdbcType=VARCHAR}, #{link,jdbcType=VARCHAR}, #{isOuterLink,jdbcType=BIT}, 
+      #{permission,jdbcType=VARCHAR}, #{hidden,jdbcType=BIT}, #{createtime,jdbcType=TIMESTAMP}, 
+      #{type,jdbcType=VARCHAR}, #{isDefault,jdbcType=BIT}, #{parentname,jdbcType=VARCHAR}, 
+      #{isHome,jdbcType=BIT}, #{isGroup,jdbcType=BIT}, #{isDelete,jdbcType=BIT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.gen.springbootserver.mybatis.model.Menu">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into menu
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="sort != null">
+        sort,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="title != null">
+        title,
+      </if>
+      <if test="icon != null">
+        icon,
+      </if>
+      <if test="link != null">
+        link,
+      </if>
+      <if test="isOuterLink != null">
+        is_outer_link,
+      </if>
+      <if test="permission != null">
+        permission,
+      </if>
+      <if test="hidden != null">
+        hidden,
+      </if>
+      <if test="createtime != null">
+        createtime,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="isDefault != null">
+        is_default,
+      </if>
+      <if test="parentname != null">
+        parentname,
+      </if>
+      <if test="isHome != null">
+        is_home,
+      </if>
+      <if test="isGroup != null">
+        is_group,
+      </if>
+      <if test="isDelete != null">
+        is_delete,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="sort != null">
+        #{sort,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="icon != null">
+        #{icon,jdbcType=VARCHAR},
+      </if>
+      <if test="link != null">
+        #{link,jdbcType=VARCHAR},
+      </if>
+      <if test="isOuterLink != null">
+        #{isOuterLink,jdbcType=BIT},
+      </if>
+      <if test="permission != null">
+        #{permission,jdbcType=VARCHAR},
+      </if>
+      <if test="hidden != null">
+        #{hidden,jdbcType=BIT},
+      </if>
+      <if test="createtime != null">
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="isDefault != null">
+        #{isDefault,jdbcType=BIT},
+      </if>
+      <if test="parentname != null">
+        #{parentname,jdbcType=VARCHAR},
+      </if>
+      <if test="isHome != null">
+        #{isHome,jdbcType=BIT},
+      </if>
+      <if test="isGroup != null">
+        #{isGroup,jdbcType=BIT},
+      </if>
+      <if test="isDelete != null">
+        #{isDelete,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.gen.springbootserver.mybatis.model.MenuExample" resultType="java.lang.Long">
+    select count(*) from menu
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update menu
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.sort != null">
+        sort = #{record.sort,jdbcType=INTEGER},
+      </if>
+      <if test="record.name != null">
+        name = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.title != null">
+        title = #{record.title,jdbcType=VARCHAR},
+      </if>
+      <if test="record.icon != null">
+        icon = #{record.icon,jdbcType=VARCHAR},
+      </if>
+      <if test="record.link != null">
+        link = #{record.link,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isOuterLink != null">
+        is_outer_link = #{record.isOuterLink,jdbcType=BIT},
+      </if>
+      <if test="record.permission != null">
+        permission = #{record.permission,jdbcType=VARCHAR},
+      </if>
+      <if test="record.hidden != null">
+        hidden = #{record.hidden,jdbcType=BIT},
+      </if>
+      <if test="record.createtime != null">
+        createtime = #{record.createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.type != null">
+        type = #{record.type,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isDefault != null">
+        is_default = #{record.isDefault,jdbcType=BIT},
+      </if>
+      <if test="record.parentname != null">
+        parentname = #{record.parentname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isHome != null">
+        is_home = #{record.isHome,jdbcType=BIT},
+      </if>
+      <if test="record.isGroup != null">
+        is_group = #{record.isGroup,jdbcType=BIT},
+      </if>
+      <if test="record.isDelete != null">
+        is_delete = #{record.isDelete,jdbcType=BIT},
+      </if>
+    </set>
+    <if test="example != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update menu
+    set id = #{record.id,jdbcType=BIGINT},
+      sort = #{record.sort,jdbcType=INTEGER},
+      name = #{record.name,jdbcType=VARCHAR},
+      title = #{record.title,jdbcType=VARCHAR},
+      icon = #{record.icon,jdbcType=VARCHAR},
+      link = #{record.link,jdbcType=VARCHAR},
+      is_outer_link = #{record.isOuterLink,jdbcType=BIT},
+      permission = #{record.permission,jdbcType=VARCHAR},
+      hidden = #{record.hidden,jdbcType=BIT},
+      createtime = #{record.createtime,jdbcType=TIMESTAMP},
+      type = #{record.type,jdbcType=VARCHAR},
+      is_default = #{record.isDefault,jdbcType=BIT},
+      parentname = #{record.parentname,jdbcType=VARCHAR},
+      is_home = #{record.isHome,jdbcType=BIT},
+      is_group = #{record.isGroup,jdbcType=BIT},
+      is_delete = #{record.isDelete,jdbcType=BIT}
+    <if test="example != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gen.springbootserver.mybatis.model.Menu">
+    update menu
+    <set>
+      <if test="sort != null">
+        sort = #{sort,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="title != null">
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="icon != null">
+        icon = #{icon,jdbcType=VARCHAR},
+      </if>
+      <if test="link != null">
+        link = #{link,jdbcType=VARCHAR},
+      </if>
+      <if test="isOuterLink != null">
+        is_outer_link = #{isOuterLink,jdbcType=BIT},
+      </if>
+      <if test="permission != null">
+        permission = #{permission,jdbcType=VARCHAR},
+      </if>
+      <if test="hidden != null">
+        hidden = #{hidden,jdbcType=BIT},
+      </if>
+      <if test="createtime != null">
+        createtime = #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="isDefault != null">
+        is_default = #{isDefault,jdbcType=BIT},
+      </if>
+      <if test="parentname != null">
+        parentname = #{parentname,jdbcType=VARCHAR},
+      </if>
+      <if test="isHome != null">
+        is_home = #{isHome,jdbcType=BIT},
+      </if>
+      <if test="isGroup != null">
+        is_group = #{isGroup,jdbcType=BIT},
+      </if>
+      <if test="isDelete != null">
+        is_delete = #{isDelete,jdbcType=BIT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gen.springbootserver.mybatis.model.Menu">
+    update menu
+    set sort = #{sort,jdbcType=INTEGER},
+      name = #{name,jdbcType=VARCHAR},
+      title = #{title,jdbcType=VARCHAR},
+      icon = #{icon,jdbcType=VARCHAR},
+      link = #{link,jdbcType=VARCHAR},
+      is_outer_link = #{isOuterLink,jdbcType=BIT},
+      permission = #{permission,jdbcType=VARCHAR},
+      hidden = #{hidden,jdbcType=BIT},
+      createtime = #{createtime,jdbcType=TIMESTAMP},
+      type = #{type,jdbcType=VARCHAR},
+      is_default = #{isDefault,jdbcType=BIT},
+      parentname = #{parentname,jdbcType=VARCHAR},
+      is_home = #{isHome,jdbcType=BIT},
+      is_group = #{isGroup,jdbcType=BIT},
+      is_delete = #{isDelete,jdbcType=BIT}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

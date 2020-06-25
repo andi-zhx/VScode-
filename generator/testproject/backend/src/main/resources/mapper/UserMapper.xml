@@ -1,0 +1,406 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gen.springbootserver.mybatis.dao.UserMapper">
+  <resultMap id="BaseResultMap" type="com.gen.springbootserver.mybatis.model.User">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="first_name" jdbcType="VARCHAR" property="firstName" />
+    <result column="last_name" jdbcType="VARCHAR" property="lastName" />
+    <result column="login" jdbcType="VARCHAR" property="login" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="age" jdbcType="INTEGER" property="age" />
+    <result column="password_hash" jdbcType="VARCHAR" property="passwordHash" />
+    <result column="is_deleted" jdbcType="BIT" property="isDeleted" />
+    <result column="settings_id" jdbcType="BIGINT" property="settingsId" />
+    <result column="address_city" jdbcType="VARCHAR" property="addressCity" />
+    <result column="address_street" jdbcType="VARCHAR" property="addressStreet" />
+    <result column="address_zip_code" jdbcType="VARCHAR" property="addressZipCode" />
+    <result column="address_lat" jdbcType="DOUBLE" property="addressLat" />
+    <result column="address_lng" jdbcType="DOUBLE" property="addressLng" />
+    <result column="created_at" jdbcType="TIMESTAMP" property="createdAt" />
+    <result column="updated_at" jdbcType="TIMESTAMP" property="updatedAt" />
+    <association property="settings" column="settings_id" select="getSettings" />
+    <association property="image" column="id" select="getImage" />
+    <collection property="roles" column="id" select="getuserRoles"></collection>
+  </resultMap>
+  <resultMap id="BaseResultMap1" type="com.gen.springbootserver.mybatis.model.Role">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="is_default" property="isDefault" />
+    <result column="name" property="name" />
+  </resultMap>
+  <resultMap id="BaseResultMapMenu" type="com.gen.springbootserver.mybatis.model.Menu">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="sort" jdbcType="INTEGER" property="sort" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="icon" jdbcType="VARCHAR" property="icon" />
+    <result column="link" jdbcType="VARCHAR" property="link" />
+    <result column="is_outer_link" jdbcType="BIT" property="isOuterLink" />
+    <result column="permission" jdbcType="VARCHAR" property="permission" />
+    <result column="hidden" jdbcType="BIT" property="hidden" />
+    <result column="createtime" jdbcType="TIMESTAMP" property="createtime" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="is_default" jdbcType="BIT" property="isDefault" />
+    <result column="parentname" jdbcType="VARCHAR" property="parentname" />
+    <result column="is_home" jdbcType="BIT" property="isHome" />
+    <result column="is_group" jdbcType="BIT" property="isGroup" />
+    <result column="is_delete" jdbcType="BIT" property="isDelete" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, first_name, last_name, login, email, age, password_hash, is_deleted, settings_id, 
+    address_city, address_street, address_zip_code, address_lat, address_lng, created_at, 
+    updated_at
+  </sql>
+  <select id="getuserRoles" parameterType="java.lang.Long" resultMap="BaseResultMap1">
+    SELECT id,is_default ,name FROM role where id in(select role_id from user_roles where user_id=#{id})
+  </select>
+  <select id="getuserMenus" parameterType="java.lang.Long" resultMap="BaseResultMapMenu">
+    select id, sort, name, title, icon, link, is_outer_link, permission, hidden, createtime, type, is_default, parentname, is_home, is_group, is_delete
+    from menu where id in (select menu_id from roles_menus where role_id in (select role_id from user_roles where user_id=#{id}));
+  </select>
+  <select id="getSettings" parameterType="java.lang.Long" resultType="com.gen.springbootserver.mybatis.model.Settings">
+        SELECT id , theme_name themeName FROM settings WHERE id=#{id}
+  </select>
+  <select id="getImage" parameterType="java.lang.Long" resultType="com.gen.springbootserver.mybatis.model.Image">
+        SELECT user_id id , image  FROM image WHERE user_id=#{id}
+  </select>
+  <select id="selectByExample" parameterType="com.gen.springbootserver.mybatis.model.UserExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from user
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="limitStart >= 0 and limitEnd > 0">
+      limit ${limitStart},${limitEnd}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from user
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from user
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.gen.springbootserver.mybatis.model.UserExample">
+    delete from user
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.gen.springbootserver.mybatis.model.User">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into user (first_name, last_name, login, 
+      email, age, password_hash, 
+      is_deleted, settings_id, address_city, 
+      address_street, address_zip_code, address_lat, 
+      address_lng, created_at, updated_at
+      )
+    values (#{firstName,jdbcType=VARCHAR}, #{lastName,jdbcType=VARCHAR}, #{login,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{age,jdbcType=INTEGER}, #{passwordHash,jdbcType=VARCHAR}, #{isDeleted,jdbcType=BIT}, #{settingsId,jdbcType=BIGINT}, #{addressCity,jdbcType=VARCHAR}, #{addressStreet,jdbcType=VARCHAR}, #{addressZipCode,jdbcType=VARCHAR}, #{addressLat,jdbcType=DOUBLE}, #{addressLng,jdbcType=DOUBLE}, #{createdAt,jdbcType=TIMESTAMP}, #{updatedAt,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.gen.springbootserver.mybatis.model.User">
+    <selectKey keyProperty="id" order="AFTER" resultType="java.lang.Long">
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="firstName != null">
+        first_name,
+      </if>
+      <if test="lastName != null">
+        last_name,
+      </if>
+      <if test="login != null">
+        login,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="age != null">
+        age,
+      </if>
+      <if test="passwordHash != null">
+        password_hash,
+      </if>
+      <if test="isDeleted != null">
+        is_deleted,
+      </if>
+      <if test="settingsId != null">
+        settings_id,
+      </if>
+      <if test="addressCity != null">
+        address_city,
+      </if>
+      <if test="addressStreet != null">
+        address_street,
+      </if>
+      <if test="addressZipCode != null">
+        address_zip_code,
+      </if>
+      <if test="addressLat != null">
+        address_lat,
+      </if>
+      <if test="addressLng != null">
+        address_lng,
+      </if>
+      <if test="createdAt != null">
+        created_at,
+      </if>
+      <if test="updatedAt != null">
+        updated_at,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="firstName != null"> #{firstName,jdbcType=VARCHAR},
+      </if>
+      <if test="lastName != null"> #{lastName,jdbcType=VARCHAR},
+      </if>
+      <if test="login != null"> #{login,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null"> #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null"> #{age,jdbcType=INTEGER},
+      </if>
+      <if test="passwordHash != null"> #{passwordHash,jdbcType=VARCHAR},
+      </if>
+      <if test="isDeleted != null"> #{isDeleted,jdbcType=BIT},
+      </if>
+      <if test="settingsId != null"> #{settingsId,jdbcType=BIGINT},
+      </if>
+      <if test="addressCity != null"> #{addressCity,jdbcType=VARCHAR},
+      </if>
+      <if test="addressStreet != null"> #{addressStreet,jdbcType=VARCHAR},
+      </if>
+      <if test="addressZipCode != null"> #{addressZipCode,jdbcType=VARCHAR},
+      </if>
+      <if test="addressLat != null"> #{addressLat,jdbcType=DOUBLE},
+      </if>
+      <if test="addressLng != null"> #{addressLng,jdbcType=DOUBLE},
+      </if>
+      <if test="createdAt != null"> #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedAt != null"> #{updatedAt,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.gen.springbootserver.mybatis.model.UserExample" resultType="java.lang.Long">
+    select count(*) from user
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update user
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=BIGINT},
+      </if>
+      <if test="record.firstName != null">
+        first_name = #{record.firstName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.lastName != null">
+        last_name = #{record.lastName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.login != null">
+        login = #{record.login,jdbcType=VARCHAR},
+      </if>
+      <if test="record.email != null">
+        email = #{record.email,jdbcType=VARCHAR},
+      </if>
+      <if test="record.age != null">
+        age = #{record.age,jdbcType=INTEGER},
+      </if>
+      <if test="record.passwordHash != null">
+        password_hash = #{record.passwordHash,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isDeleted != null">
+        is_deleted = #{record.isDeleted,jdbcType=BIT},
+      </if>
+      <if test="record.settingsId != null">
+        settings_id = #{record.settingsId,jdbcType=BIGINT},
+      </if>
+      <if test="record.addressCity != null">
+        address_city = #{record.addressCity,jdbcType=VARCHAR},
+      </if>
+      <if test="record.addressStreet != null">
+        address_street = #{record.addressStreet,jdbcType=VARCHAR},
+      </if>
+      <if test="record.addressZipCode != null">
+        address_zip_code = #{record.addressZipCode,jdbcType=VARCHAR},
+      </if>
+      <if test="record.addressLat != null">
+        address_lat = #{record.addressLat,jdbcType=DOUBLE},
+      </if>
+      <if test="record.addressLng != null">
+        address_lng = #{record.addressLng,jdbcType=DOUBLE},
+      </if>
+      <if test="record.createdAt != null">
+        created_at = #{record.createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updatedAt != null">
+        updated_at = #{record.updatedAt,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="example != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update user
+    set id = #{record.id,jdbcType=BIGINT},
+      first_name = #{record.firstName,jdbcType=VARCHAR},
+      last_name = #{record.lastName,jdbcType=VARCHAR},
+      login = #{record.login,jdbcType=VARCHAR},
+      email = #{record.email,jdbcType=VARCHAR},
+      age = #{record.age,jdbcType=INTEGER},
+      password_hash = #{record.passwordHash,jdbcType=VARCHAR},
+      is_deleted = #{record.isDeleted,jdbcType=BIT},
+      settings_id = #{record.settingsId,jdbcType=BIGINT},
+      address_city = #{record.addressCity,jdbcType=VARCHAR},
+      address_street = #{record.addressStreet,jdbcType=VARCHAR},
+      address_zip_code = #{record.addressZipCode,jdbcType=VARCHAR},
+      address_lat = #{record.addressLat,jdbcType=DOUBLE},
+      address_lng = #{record.addressLng,jdbcType=DOUBLE},
+      created_at = #{record.createdAt,jdbcType=TIMESTAMP},
+      updated_at = #{record.updatedAt,jdbcType=TIMESTAMP}
+    <if test="example != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gen.springbootserver.mybatis.model.User">
+    update user
+    <set>
+      <if test="firstName != null">
+        first_name = #{firstName,jdbcType=VARCHAR},
+      </if>
+      <if test="lastName != null">
+        last_name = #{lastName,jdbcType=VARCHAR},
+      </if>
+      <if test="login != null">
+        login = #{login,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null">
+        age = #{age,jdbcType=INTEGER},
+      </if>
+      <if test="passwordHash != null">
+        password_hash = #{passwordHash,jdbcType=VARCHAR},
+      </if>
+      <if test="isDeleted != null">
+        is_deleted = #{isDeleted,jdbcType=BIT},
+      </if>
+      <if test="settingsId != null">
+        settings_id = #{settingsId,jdbcType=BIGINT},
+      </if>
+      <if test="addressCity != null">
+        address_city = #{addressCity,jdbcType=VARCHAR},
+      </if>
+      <if test="addressStreet != null">
+        address_street = #{addressStreet,jdbcType=VARCHAR},
+      </if>
+      <if test="addressZipCode != null">
+        address_zip_code = #{addressZipCode,jdbcType=VARCHAR},
+      </if>
+      <if test="addressLat != null">
+        address_lat = #{addressLat,jdbcType=DOUBLE},
+      </if>
+      <if test="addressLng != null">
+        address_lng = #{addressLng,jdbcType=DOUBLE},
+      </if>
+      <if test="createdAt != null">
+        created_at = #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedAt != null">
+        updated_at = #{updatedAt,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gen.springbootserver.mybatis.model.User">
+    update user
+    set first_name = #{firstName,jdbcType=VARCHAR},
+      last_name = #{lastName,jdbcType=VARCHAR},
+      login = #{login,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      age = #{age,jdbcType=INTEGER},
+      password_hash = #{passwordHash,jdbcType=VARCHAR},
+      is_deleted = #{isDeleted,jdbcType=BIT},
+      settings_id = #{settingsId,jdbcType=BIGINT},
+      address_city = #{addressCity,jdbcType=VARCHAR},
+      address_street = #{addressStreet,jdbcType=VARCHAR},
+      address_zip_code = #{addressZipCode,jdbcType=VARCHAR},
+      address_lat = #{addressLat,jdbcType=DOUBLE},
+      address_lng = #{addressLng,jdbcType=DOUBLE},
+      created_at = #{createdAt,jdbcType=TIMESTAMP},
+      updated_at = #{updatedAt,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

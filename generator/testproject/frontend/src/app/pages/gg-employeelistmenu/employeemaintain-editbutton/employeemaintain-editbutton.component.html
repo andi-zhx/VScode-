@@ -1,0 +1,76 @@
+
+<nb-card>
+  <nb-card-header>员工信息维护</nb-card-header>
+  <nb-card-body>
+    <div [formGroup]="employeemaintainForm" class="col-md-6">
+      <div class="form-group row" hidden>
+        <label for="id" class="label col-sm-3 col-form-label">id</label>
+        <div class="col-sm-9">
+          <input nbInput fullWidth id="id" placeholder="id" formControlName="id" [status]="(id?.errors?.required || id?.hasError('pattern')) && id.touched ? 'danger' : 'primary'" >
+          <ngx-validation-message label="id" [showRequired]="id?.errors?.required && id.touched" [showPattern]="id?.hasError('pattern')"></ngx-validation-message>
+        </div>
+      </div>
+      <div class="form-group row" >
+        <label for="name" class="label col-sm-3 col-form-label">姓名</label>
+        <div class="col-sm-9">
+          <input nbInput fullWidth id="name" placeholder="name" formControlName="name" [status]="(name?.hasError('maxLength')) && name.touched ? 'danger' : 'primary'" >
+          <ngx-validation-message label="name" [showMaxLength]="name?.hasError('maxLength')" maxLength=100></ngx-validation-message>
+        </div>
+      </div>
+      <div class="form-group row" >
+        <label for="idnumber" class="label col-sm-3 col-form-label">身份证号</label>
+        <div class="col-sm-9">
+          <input nbInput fullWidth id="idnumber" placeholder="idnumber" formControlName="idnumber" [status]="(idnumber?.hasError('maxLength')) && idnumber.touched ? 'danger' : 'primary'" >
+          <ngx-validation-message label="idnumber" [showMaxLength]="idnumber?.hasError('maxLength')" maxLength=18></ngx-validation-message>
+        </div>
+      </div>
+      <div class="form-group row" >
+        <label for="department" class="label col-sm-3 col-form-label">所属部门</label>
+        <div class="col-sm-9">
+          <input nbInput fullWidth id="department" placeholder="department" formControlName="department" [status]="(department?.hasError('maxLength')) && department.touched ? 'danger' : 'primary'" >
+          <ngx-validation-message label="department" [showMaxLength]="department?.hasError('maxLength')" maxLength=100></ngx-validation-message>
+        </div>
+      </div>
+      <div class="form-group row" >
+        <label for="position" class="label col-sm-3 col-form-label">职位</label>
+        <div class="col-sm-9">
+          <input nbInput fullWidth id="position" placeholder="position" formControlName="position" [status]="(position?.hasError('maxLength')) && position.touched ? 'danger' : 'primary'" >
+          <ngx-validation-message label="position" [showMaxLength]="position?.hasError('maxLength')" maxLength=100></ngx-validation-message>
+        </div>
+      </div>
+      <div class="form-group row" >
+        <label for="duty" class="label col-sm-3 col-form-label">职责</label>
+        <div class="col-sm-9">
+          <input nbInput fullWidth id="duty" placeholder="duty" formControlName="duty"  >
+          <ngx-validation-message label="duty" ></ngx-validation-message>
+        </div>
+      </div>
+      <div class="form-group row" >
+        <label for="starttime" class="label col-sm-3 col-form-label">入职时间</label>
+        <div class="col-sm-9">
+          <input nbInput fullWidth id="starttime" placeholder="starttime" formControlName="starttime"  >
+          <ngx-validation-message label="starttime" ></ngx-validation-message>
+        </div>
+      </div>
+      <div class="form-group row" >
+        <label for="contractend" class="label col-sm-3 col-form-label">合同到期日</label>
+        <div class="col-sm-9">
+          <input nbInput fullWidth id="contractend" placeholder="contractend" formControlName="contractend"  >
+          <ngx-validation-message label="contractend" ></ngx-validation-message>
+        </div>
+      </div>
+      <div class="form-group row" >
+        <label for="current" class="label col-sm-3 col-form-label">在职</label>
+        <div class="col-sm-9">
+          <nb-checkbox fullWidth id="current" placeholder="current" formControlName="current" >current</nb-checkbox>
+          <ngx-validation-message label="current" ></ngx-validation-message>
+        </div>
+      </div>
+    </div>
+  </nb-card-body>
+  <nb-card-footer>
+    <button nbButton status="primary" [disabled]="!employeemaintainForm.valid" (click)="save()" hero>Submit</button>
+    <button nbButton status="info" (click)="back()" hero>Back</button>
+  </nb-card-footer>
+</nb-card>
+       

@@ -1,0 +1,511 @@
+{
+    "employeelistmenu":{
+        "Title": "员工信息清单",
+        "Icon": "person",
+        "SubMenu":{
+            "employeelist":{
+                "Function": "Grid",
+                "Button":{
+                    "export":{
+                        "Function": "Export",
+                        "Label": "导出",
+                        "Implication": "Info",
+                        "Shape": "Rectangle",
+                        "Show": true,
+                        "Size": "Medium",
+                        "Style": "Hero"
+                    }
+                },
+                "Icon": "grid",
+                "Title": "员工信息表",
+                "MainTable": {
+                    "Name": "employee",
+                    "SQL": "select * from employee",
+                    "ReadOnly": true,
+                    "Fields": [
+                        {
+                            "id": {
+                                "type": "DataTypes.BIGINT",
+                                "allowNull": false,
+                                "primaryKey": true,
+                                "comment": "null",
+                                "title": "id",
+                                "widget": "Textbox",
+                                "show": false,
+                                "disable": false,
+                                "enumdata": []
+                            },
+                            "name": {
+                                "type": "DataTypes.STRING(100)",
+                                "allowNull": true,
+                                "autoIncrement": false,
+                                "comment": "null",
+                                "title": "姓名",
+                                "widget": "Textbox",
+                                "show": true,
+                                "disable": false,
+                                "enumdata": []
+                            },
+                            "idnumber": {
+                                "type": "DataTypes.CHAR(18)",
+                                "allowNull": true,
+                                "autoIncrement": false,
+                                "comment": "null",
+                                "title": "身份证号",
+                                "widget": "Textbox",
+                                "show": true,
+                                "disable": false,
+                                "enumdata": []
+                            },
+                            "department": {
+                                "type": "DataTypes.STRING(100)",
+                                "allowNull": true,
+                                "autoIncrement": false,
+                                "comment": "null",
+                                "title": "所属部门",
+                                "widget": "Textbox",
+                                "show": true,
+                                "disable": false,
+                                "enumdata": []
+                            },
+                            "position": {
+                                "type": "DataTypes.STRING(100)",
+                                "allowNull": true,
+                                "autoIncrement": false,
+                                "comment": "null",
+                                "title": "职位",
+                                "widget": "Textbox",
+                                "show": true,
+                                "disable": false,
+                                "enumdata": []
+                            },
+                            "duty": {
+                                "type": "DataTypes.TEXT",
+                                "allowNull": true,
+                                "autoIncrement": false,
+                                "comment": "null",
+                                "title": "职责",
+                                "widget": "Textbox",
+                                "show": true,
+                                "disable": false,
+                                "enumdata": []
+                            },
+                            "starttime": {
+                                "type": "DataTypes.DATE",
+                                "allowNull": true,
+                                "autoIncrement": false,
+                                "comment": "null",
+                                "title": "入职时间",
+                                "widget": "Textbox",
+                                "show": true,
+                                "disable": false,
+                                "enumdata": []
+                            },
+                            "contractend": {
+                                "type": "DataTypes.DATE",
+                                "allowNull": true,
+                                "autoIncrement": false,
+                                "comment": "null",
+                                "title": "合同到期日",
+                                "widget": "Textbox",
+                                "show": true,
+                                "disable": false,
+                                "enumdata": []
+                            },
+                            "current": {
+                                "type": "DataTypes.BOOLEAN",
+                                "allowNull": true,
+                                "autoIncrement": false,
+                                "comment": "null",
+                                "title": "在职",
+                                "widget": "Checkbox",
+                                "show": true,
+                                "disable": false,
+                                "enumdata": []
+                            }
+                        }
+                    ],
+                    "CalculationFormula": [],
+                    "FieldsNotNull": []
+                }
+            },
+            "employeemaintain":{
+                "Function": "Grid",
+                "Button":{
+                    "editbutton":{
+                        "Function": "Edit",
+                        "Label": "编辑",
+                        "Implication": "Info",
+                        "Shape": "Rectangle",
+                        "Show": true,
+                        "Size": "Medium",
+                        "Style": "Hero"
+                    },
+                    "deletebutton":{
+                        "Function": "Delete",
+                        "Label": "删除",
+                        "Implication": "Info",
+                        "Shape": "Rectangle",
+                        "Show": true,
+                        "Size": "Medium",
+                        "Style": "Hero"
+                    }
+                },
+                "Icon": "grid",
+                "Title": "员工信息维护",
+                "MainTable": {
+                    "Name": "employee",
+                    "SQL": "select * from employee",
+                    "ReadOnly": false,
+                    "Fields": [
+                        {
+                            "id": {
+                                "type": "DataTypes.BIGINT",
+                                "allowNull": false,
+                                "primaryKey": true,
+                                "comment": "null",
+                                "title": "id",
+                                "widget": "Textbox",
+                                "show": false,
+                                "disable": false,
+                                "enumdata": []
+                            },
+                            "name": {
+                                "type": "DataTypes.STRING(100)",
+                                "allowNull": true,
+                                "autoIncrement": false,
+                                "comment": "null",
+                                "title": "姓名",
+                                "widget": "Textbox",
+                                "show": true,
+                                "disable": false,
+                                "enumdata": []
+                            },
+                            "idnumber": {
+                                "type": "DataTypes.CHAR(18)",
+                                "allowNull": true,
+                                "autoIncrement": false,
+                                "comment": "null",
+                                "title": "身份证号",
+                                "widget": "Textbox",
+                                "show": true,
+                                "disable": false,
+                                "enumdata": []
+                            },
+                            "department": {
+                                "type": "DataTypes.STRING(100)",
+                                "allowNull": true,
+                                "autoIncrement": false,
+                                "comment": "null",
+                                "title": "所属部门",
+                                "widget": "Textbox",
+                                "show": true,
+                                "disable": false,
+                                "enumdata": []
+                            },
+                            "position": {
+                                "type": "DataTypes.STRING(100)",
+                                "allowNull": true,
+                                "autoIncrement": false,
+                                "comment": "null",
+                                "title": "职位",
+                                "widget": "Textbox",
+                                "show": true,
+                                "disable": false,
+                                "enumdata": []
+                            },
+                            "duty": {
+                                "type": "DataTypes.TEXT",
+                                "allowNull": true,
+                                "autoIncrement": false,
+                                "comment": "null",
+                                "title": "职责",
+                                "widget": "Textbox",
+                                "show": true,
+                                "disable": false,
+                                "enumdata": []
+                            },
+                            "starttime": {
+                                "type": "DataTypes.DATE",
+                                "allowNull": true,
+                                "autoIncrement": false,
+                                "comment": "null",
+                                "title": "入职时间",
+                                "widget": "Textbox",
+                                "show": true,
+                                "disable": false,
+                                "enumdata": []
+                            },
+                            "contractend": {
+                                "type": "DataTypes.DATE",
+                                "allowNull": true,
+                                "autoIncrement": false,
+                                "comment": "null",
+                                "title": "合同到期日",
+                                "widget": "Textbox",
+                                "show": true,
+                                "disable": false,
+                                "enumdata": []
+                            },
+                            "current": {
+                                "type": "DataTypes.BOOLEAN",
+                                "allowNull": true,
+                                "autoIncrement": false,
+                                "comment": "null",
+                                "title": "在职",
+                                "widget": "Checkbox",
+                                "show": true,
+                                "disable": false,
+                                "enumdata": []
+                            }
+                        }
+                    ],
+                    "CalculationFormula": [],
+                    "FieldsNotNull": []
+                }
+            }
+        }
+    },
+    "newemployeemenu":{
+        "Title": "新员工",
+        "Icon": "paper-plane",
+        "SubMenu":{
+            "newemployee":{
+                "Function": "Append",
+                "Icon": "person",
+                "Title": "新增员工",
+                "MainTable": {
+                    "Name": "employee",
+                    "SQL": "select * from employee",
+                    "Fields": [
+                        {
+                            "id": {
+                                "type": "DataTypes.BIGINT",
+                                "allowNull": false,
+                                "primaryKey": true,
+                                "comment": "null",
+                                "title": "id",
+                                "widget": "Textbox",
+                                "show": false,
+                                "disable": false,
+                                "enumdata": []
+                            },
+                            "name": {
+                                "type": "DataTypes.STRING(100)",
+                                "allowNull": true,
+                                "autoIncrement": false,
+                                "comment": "null",
+                                "title": "姓名",
+                                "widget": "Textbox",
+                                "show": true,
+                                "disable": false,
+                                "enumdata": []
+                            },
+                            "idnumber": {
+                                "type": "DataTypes.CHAR(18)",
+                                "allowNull": true,
+                                "autoIncrement": false,
+                                "comment": "null",
+                                "title": "身份证号",
+                                "widget": "Textbox",
+                                "show": true,
+                                "disable": false,
+                                "enumdata": []
+                            },
+                            "department": {
+                                "type": "DataTypes.STRING(100)",
+                                "allowNull": true,
+                                "autoIncrement": false,
+                                "comment": "null",
+                                "title": "所属部门",
+                                "widget": "Combobox",
+                                "show": true,
+                                "disable": false,
+                                "enumdata": ["技术部","财务部","销售部","HR"]
+                            },
+                            "position": {
+                                "type": "DataTypes.STRING(100)",
+                                "allowNull": true,
+                                "autoIncrement": false,
+                                "comment": "null",
+                                "title": "职位",
+                                "widget": "Textbox",
+                                "show": true,
+                                "disable": false,
+                                "enumdata": []
+                            },
+                            "duty": {
+                                "type": "DataTypes.TEXT",
+                                "allowNull": true,
+                                "autoIncrement": false,
+                                "comment": "null",
+                                "title": "职责",
+                                "widget": "Text Area",
+                                "show": true,
+                                "disable": false,
+                                "enumdata": []
+                            },
+                            "starttime": {
+                                "type": "DataTypes.DATE",
+                                "allowNull": true,
+                                "autoIncrement": false,
+                                "comment": "null",
+                                "title": "入职时间",
+                                "widget": "Datepicker",
+                                "show": true,
+                                "disable": false,
+                                "enumdata": []
+                            },
+                            "contractend": {
+                                "type": "DataTypes.DATE",
+                                "allowNull": true,
+                                "autoIncrement": false,
+                                "comment": "null",
+                                "title": "合同到期日",
+                                "widget": "Datepicker",
+                                "show": true,
+                                "disable": false,
+                                "enumdata": []
+                            },
+                            "current": {
+                                "type": "DataTypes.BOOLEAN",
+                                "allowNull": true,
+                                "autoIncrement": false,
+                                "comment": "null",
+                                "title": "入职",
+                                "widget": "Checkbox",
+                                "show": true,
+                                "disable": false,
+                                "enumdata": []
+                            }
+                        }
+                    ],
+                    "CalculationFormula": [],
+                    "FieldsNotNull": [],
+                    "ReadOnly": false
+                }
+            }
+        }
+    },
+    "curretemployeemenu":{
+        "Title": "在职员工",
+        "Icon": "people-outline",
+        "SubMenu":{
+            "employeeedit":{
+                "Function": "Edit",
+                "Icon": "activity",
+                "Title": "员工信息维护",
+                "MainTable": {
+                    "Name": "employee",
+                    "SQL": "select * from employee",
+                    "Fields": [
+                        {
+                            "id": {
+                                "type": "DataTypes.BIGINT",
+                                "allowNull": false,
+                                "primaryKey": true,
+                                "comment": "null",
+                                "title": "id",
+                                "widget": "Textbox",
+                                "show": false,
+                                "disable": false,
+                                "enumdata": []
+                            },
+                            "name": {
+                                "type": "DataTypes.STRING(100)",
+                                "allowNull": true,
+                                "autoIncrement": false,
+                                "comment": "null",
+                                "title": "姓名",
+                                "widget": "Textbox",
+                                "show": true,
+                                "disable": false,
+                                "enumdata": []
+                            },
+                            "idnumber": {
+                                "type": "DataTypes.CHAR(18)",
+                                "allowNull": true,
+                                "autoIncrement": false,
+                                "comment": "null",
+                                "title": "身份证号",
+                                "widget": "Textbox",
+                                "show": true,
+                                "disable": false,
+                                "enumdata": []
+                            },
+                            "department": {
+                                "type": "DataTypes.STRING(100)",
+                                "allowNull": true,
+                                "autoIncrement": false,
+                                "comment": "null",
+                                "title": "所属部门",
+                                "widget": "Combobox",
+                                "show": true,
+                                "disable": false,
+                                "enumdata": ["技术部","财务部","销售部","HR"]
+                            },
+                            "position": {
+                                "type": "DataTypes.STRING(100)",
+                                "allowNull": true,
+                                "autoIncrement": false,
+                                "comment": "null",
+                                "title": "职位",
+                                "widget": "Textbox",
+                                "show": true,
+                                "disable": false,
+                                "enumdata": []
+                            },
+                            "duty": {
+                                "type": "DataTypes.TEXT",
+                                "allowNull": true,
+                                "autoIncrement": false,
+                                "comment": "null",
+                                "title": "职责",
+                                "widget": "Text Area",
+                                "show": true,
+                                "disable": false,
+                                "enumdata": []
+                            },
+                            "starttime": {
+                                "type": "DataTypes.DATE",
+                                "allowNull": true,
+                                "autoIncrement": false,
+                                "comment": "null",
+                                "title": "入职时间",
+                                "widget": "Datepicker",
+                                "show": true,
+                                "disable": false,
+                                "enumdata": []
+                            },
+                            "contractend": {
+                                "type": "DataTypes.DATE",
+                                "allowNull": true,
+                                "autoIncrement": false,
+                                "comment": "null",
+                                "title": "合同到期日",
+                                "widget": "Datepicker",
+                                "show": true,
+                                "disable": false,
+                                "enumdata": []
+                            },
+                            "current": {
+                                "type": "DataTypes.BOOLEAN",
+                                "allowNull": true,
+                                "autoIncrement": false,
+                                "comment": "null",
+                                "title": "入职",
+                                "widget": "Checkbox",
+                                "show": true,
+                                "disable": false,
+                                "enumdata": []
+                            }
+                        }
+                    ],
+                    "CalculationFormula": [],
+                    "FieldsNotNull": [],
+                    "ReadOnly": false
+                }
+            }
+        }
+    }
+}

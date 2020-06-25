@@ -1,0 +1,18 @@
+
+<nb-card>
+  <nb-card-header>
+    角色管理
+  </nb-card-header>
+
+  <nb-card-body><div class="buttons-row">
+    <button nbButton status="primary" shape="semi-round" size="medium" (click)="editbutton()"  default hidden>编辑 </button>
+    <button nbButton status="primary" shape="semi-round" size="medium" (click)="deletebutton()"  default hidden>删除 </button>
+    <button nbButton status="primary" shape="semi-round" size="medium" (click)="exportbutton()"  default>export </button></div>
+    <ng2-smart-table class="example-smart-table" [settings]="settings" [source]="source"
+    (deleteConfirm)="onDeleteConfirm($event)" (editConfirm)="onSaveConfirm($event)"
+    (createConfirm)="onCreateConfirm($event)"
+      (rowSelect)	="setSelecRow($event)">
+    </ng2-smart-table>
+  </nb-card-body>
+</nb-card>
+    

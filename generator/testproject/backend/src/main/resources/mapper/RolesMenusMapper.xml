@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.gen.springbootserver.mybatis.dao.RolesMenusMapper">
+  <resultMap id="BaseResultMap" type="com.gen.springbootserver.mybatis.model.RolesMenus">
+    <id column="role_id" jdbcType="BIGINT" property="roleId" />
+    <id column="menu_id" jdbcType="BIGINT" property="menuId" />
+    <result column="creater" jdbcType="VARCHAR" property="creater" />
+    <result column="creattime" jdbcType="TIMESTAMP" property="creattime" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    role_id, menu_id, creater, creattime
+  </sql>
+  <select id="selectByExample" parameterType="com.gen.springbootserver.mybatis.model.RolesMenusExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from roles_menus
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+    <if test="limitStart >= 0 and limitEnd > 0">
+      limit ${limitStart},${limitEnd}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="map" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from roles_menus
+    where role_id = #{roleId,jdbcType=BIGINT}
+      and menu_id = #{menuId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="map">
+    delete from roles_menus
+    where role_id = #{roleId,jdbcType=BIGINT}
+      and menu_id = #{menuId,jdbcType=BIGINT}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.gen.springbootserver.mybatis.model.RolesMenusExample">
+    delete from roles_menus
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.gen.springbootserver.mybatis.model.RolesMenus">
+    insert into roles_menus (role_id, menu_id, creater, 
+      creattime)
+    values (#{roleId,jdbcType=BIGINT}, #{menuId,jdbcType=BIGINT}, #{creater,jdbcType=VARCHAR}, 
+      #{creattime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.gen.springbootserver.mybatis.model.RolesMenus">
+    insert into roles_menus
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="roleId != null">
+        role_id,
+      </if>
+      <if test="menuId != null">
+        menu_id,
+      </if>
+      <if test="creater != null">
+        creater,
+      </if>
+      <if test="creattime != null">
+        creattime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="roleId != null">
+        #{roleId,jdbcType=BIGINT},
+      </if>
+      <if test="menuId != null">
+        #{menuId,jdbcType=BIGINT},
+      </if>
+      <if test="creater != null">
+        #{creater,jdbcType=VARCHAR},
+      </if>
+      <if test="creattime != null">
+        #{creattime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.gen.springbootserver.mybatis.model.RolesMenusExample" resultType="java.lang.Long">
+    select count(*) from roles_menus
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update roles_menus
+    <set>
+      <if test="record.roleId != null">
+        role_id = #{record.roleId,jdbcType=BIGINT},
+      </if>
+      <if test="record.menuId != null">
+        menu_id = #{record.menuId,jdbcType=BIGINT},
+      </if>
+      <if test="record.creater != null">
+        creater = #{record.creater,jdbcType=VARCHAR},
+      </if>
+      <if test="record.creattime != null">
+        creattime = #{record.creattime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    <if test="example != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update roles_menus
+    set role_id = #{record.roleId,jdbcType=BIGINT},
+      menu_id = #{record.menuId,jdbcType=BIGINT},
+      creater = #{record.creater,jdbcType=VARCHAR},
+      creattime = #{record.creattime,jdbcType=TIMESTAMP}
+    <if test="example != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.gen.springbootserver.mybatis.model.RolesMenus">
+    update roles_menus
+    <set>
+      <if test="creater != null">
+        creater = #{creater,jdbcType=VARCHAR},
+      </if>
+      <if test="creattime != null">
+        creattime = #{creattime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where role_id = #{roleId,jdbcType=BIGINT}
+      and menu_id = #{menuId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.gen.springbootserver.mybatis.model.RolesMenus">
+    update roles_menus
+    set creater = #{creater,jdbcType=VARCHAR},
+      creattime = #{creattime,jdbcType=TIMESTAMP}
+    where role_id = #{roleId,jdbcType=BIGINT}
+      and menu_id = #{menuId,jdbcType=BIGINT}
+  </update>
+</mapper>

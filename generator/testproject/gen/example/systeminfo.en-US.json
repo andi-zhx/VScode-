@@ -1,0 +1,40 @@
+{
+    "System": {"Title": "Generic Generator", 
+        "Copyright": "",
+        "SubTitle": "",
+        "organization": "",
+        "Version": ""
+    },
+    "Setup": {
+        "Logo": {
+            "Image": "",
+            "Text": "",
+            "Foreground": "",
+            "Background": ""
+        },
+        "Banner": {
+            "Background": "",
+            "Foreground": "",
+            "Shadow": "",
+            "Text": ""
+        },
+        "Login": {
+            "background picture": "",
+            "interface size": "medium"
+        },
+        "System tone": "#00E000",
+        "Menu Style": "Drop-Down Menu",
+        "System font": "Arial",
+        "File Upload and Download Path": ""
+    },
+    "Connection": {
+        "default Connection": "",
+        "other Connection": "",
+        "AliYun OSS Connection": {
+            "Endpoint": "",
+            "Bucket": "",
+            "Access ID": "",
+            "Access Key Secret": ""
+        }
+    }
+}

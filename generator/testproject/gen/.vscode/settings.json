@@ -1,0 +1,16 @@
+{
+    "json.schemas": [
+        {
+            "fileMatch": [
+                "/json/systeminfo.*.json"
+            ],
+            "url": "/json/schemas/systeminfo.schemas.json"
+        },
+        {
+            "fileMatch": [
+                "/json/functiontree.*.json"
+            ],
+            "url": "/json/schemas/functiontree.schemas.json"
+        }
+    ]
+}

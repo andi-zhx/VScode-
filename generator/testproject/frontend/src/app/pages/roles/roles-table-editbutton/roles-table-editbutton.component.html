@@ -1,0 +1,34 @@
+
+<nb-card>
+  <nb-card-header>角色管理</nb-card-header>
+  <nb-card-body>
+    <div [formGroup]="rolesTableForm" class="col-md-6">
+      <div class="form-group row" >
+        <label for="id" class="label col-sm-3 col-form-label">id</label>
+        <div class="col-sm-9">
+          <input nbInput fullWidth id="id" placeholder="id" formControlName="id" [status]="(id?.errors?.required || id?.hasError('pattern')) && id.touched ? 'danger' : 'primary'" >
+          <ngx-validation-message label="id" [showRequired]="id?.errors?.required && id.touched" [showPattern]="id?.hasError('pattern')"></ngx-validation-message>
+        </div>
+      </div>
+      <div class="form-group row" >
+        <label for="isDefault" class="label col-sm-3 col-form-label">is_default</label>
+        <div class="col-sm-9">
+          <input nbInput fullWidth id="isDefault" placeholder="isDefault" formControlName="isDefault"  >
+          <ngx-validation-message label="isDefault" ></ngx-validation-message>
+        </div>
+      </div>
+      <div class="form-group row" >
+        <label for="name" class="label col-sm-3 col-form-label">name</label>
+        <div class="col-sm-9">
+          <input nbInput fullWidth id="name" placeholder="name" formControlName="name" [status]="(name?.hasError('maxLength')) && name.touched ? 'danger' : 'primary'" >
+          <ngx-validation-message label="name" [showMaxLength]="name?.hasError('maxLength')" maxLength=255></ngx-validation-message>
+        </div>
+      </div>
+    </div>
+  </nb-card-body>
+  <nb-card-footer>
+    <button nbButton status="primary" [disabled]="!rolesTableForm.valid" (click)="save()" hero>Submit</button>
+    <button nbButton status="info" (click)="back()" hero>Back</button>
+  </nb-card-footer>
+</nb-card>
+       

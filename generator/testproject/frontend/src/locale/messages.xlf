@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="LoginTitle" datatype="html">
+        <source>Login</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/@auth/components/login/login.component.html</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+        <note priority="1" from="description">An introduction header for Login</note>
+        <note priority="1" from="meaning">Login welcome</note>
+      </trans-unit>
+      <trans-unit id="LoginSubtitle" datatype="html">
+        <source>Hello! Log in with your email.</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/@auth/components/login/login.component.html</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+        <note priority="1" from="description">An sub-title for Login</note>
+        <note priority="1" from="meaning">Login sub-title</note>
+      </trans-unit>
+      <trans-unit id="AlertErrorMessage" datatype="html">
+        <source>Oh snap!</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/@auth/components/login/login.component.html</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/@auth/components/register/register.component.html</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/@auth/components/request-password/request-password.component.html</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/@auth/components/reset-password/reset-password.component.html</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+        <note priority="1" from="description">An message for error Login</note>
+        <note priority="1" from="meaning">Login error message</note>
+      </trans-unit>
+      <trans-unit id="LoginErrorTip" datatype="html">
+        <source>{VAR_SELECT, select, Login/Email combination is not correct, please try again. {Login/Email combination is not correct, please try again.} }</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/@auth/components/login/login.component.html</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+        <note priority="1" from="description">An tip for Login fail</note>
+        <note priority="1" from="meaning">Login error tip</note>
+      </trans-unit>
+      <trans-unit id="AlertSuccessMessage" datatype="html">
+        <source>Hooray!</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/@auth/components/login/login.component.html</context>
+          <context context-type="linenumber">18</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/@auth/components/register/register.component.html</context>
+          <context context-type="linenumber">17</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/@auth/components/request-password/request-password.component.html</context>
+          <context context-type="linenumber">18</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/@auth/components/reset-password/reset-password.component.html</context>
+          <context context-type="linenumber">18</context>
+        </context-group>
+        <note priority="1" from="description">An message for successful Login</note>
+        <note priority="1" from="meaning">Login success message</note>
+      </trans-unit>
+      <trans-unit id="emailAddress" datatype="html">
+        <source>Email address:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/@auth/components/login/login.component.html</context>
+          <context context-type="linenumber">26</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/@auth/components/register/register.component.html</context>
+          <context context-type="linenumber">45</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/@auth/components/request-password/request-password.component.html</context>
+          <context context-type="linenumber">27</context>
+        </context-group>
+        <note priority="1" from="description">Email address label</note>
+        <note priority="1" from="meaning">Email address</note>
+      </trans-unit>
+      <trans-unit id="Password" datatype="html">
+        <source>Password:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/@auth/components/login/login.component.html</context>
+          <context context-type="linenumber">40</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/@auth/components/register/register.component.html</context>
+          <context context-type="linenumber">59</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/@auth/components/reset-password/reset-password.component.html</context>
+          <context context-type="linenumber">27</context>
+        </context-group>
+        <note priority="1" from="description">password</note>
+        <note priority="1" from="meaning">password</note>
+      </trans-unit>
+      <trans-unit id="ForgotPass" datatype="html">
+        <source>Forgot Password?</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/@auth/components/login/login.component.html</context>
+          <context context-type="linenumber">41</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/@auth/components/request-password/request-password.component.html</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+        <note priority="1" from="description">Forgot password?</note>
+        <note priority="1" from="meaning">Forgot password</note>
+      </trans-unit>
+      <trans-unit id="RememberMe" datatype="html">
+        <source>Remember me</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/@auth/components/login/login.component.html</context>
+          <context context-type="linenumber">58</context>
+        </context-group>
+        <note priority="1" from="description">Remember Me</note>
+        <note priority="1" from="meaning">Remember Me</note>
+      </trans-unit>
+      <trans-unit id="Login" datatype="html">
+        <source>Log In</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/@auth/components/login/login.component.html</context>
+          <context context-type="linenumber">64</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/@auth/components/register/register.component.html</context>
+          <context context-type="linenumber">134</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/@auth/components/request-password/request-password.component.html</context>
+          <context context-type="linenumber">54</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/@auth/components/reset-password/reset-password.component.html</context>
+          <context context-type="linenumber">72</context>
+        </context-group>
+        <note priority="1" from="description">login button</note>
+        <note priority="1" from="meaning">Login button</note>
+      </trans-unit>
+      <trans-unit id="OrEnterWith" datatype="html">
+        <source>or enter with:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/@auth/components/login/login.component.html</context>
+          <context context-type="linenumber">69</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/@auth/components/register/register.component.html</context>
+          <context context-type="linenumber">109</context>
+        </context-group>
+        <note priority="1" from="description">or enter with</note>
+        <note priority="1" from="meaning">or enter with</note>
+      </trans-unit>
+      <trans-unit id="DontHaveAnAccount" datatype="html">
+        <source>Don&apos;t have an account? </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/@auth/components/login/login.component.html</context>
+          <context context-type="linenumber">93</context>
+        </context-group>
+        <note priority="1" from="description">Don&apos;t have an account</note>
+        <note priority="1" from="meaning">Don&apos;t have an account</note>
+      </trans-unit>
+      <trans-unit id="Register" datatype="html">
+        <source>Register</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/@auth/components/login/login.component.html</context>
+          <context context-type="linenumber">93</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/@auth/components/register/register.component.html</context>
+          <context context-type="linenumber">104</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/@auth/components/request-password/request-password.component.html</context>
+          <context context-type="linenumber">55</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/@auth/components/reset-password/reset-password.component.html</context>
+          <context context-type="linenumber">73</context>
+        </context-group>
+        <note priority="1" from="description">Register link </note>
+        <note priority="1" from="meaning">Register link</note>
+      </trans-unit>
+      <trans-unit id="Loginout" datatype="html">
+        <source>Logging out, please wait...</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/@auth/components/logout/logout.component.html</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+        <note priority="1" from="description">Loggingout</note>
+        <note priority="1" from="meaning">Loggingout</note>
+      </trans-unit>
+      <trans-unit id="RegisterTitle" datatype="html">
+        <source>Register</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/@auth/components/register/register.component.html</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+        <note priority="1" from="description">An introduction header for Register</note>
+        <note priority="1" from="meaning">Register welcome</note>
+      </trans-unit>
+      <trans-unit id="InputName" datatype="html">
+        <source>Login:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/@auth/components/register/register.component.html</context>
+          <context context-type="linenumber">25</context>
+        </context-group>
+        <note priority="1" from="description">input name</note>
+        <note priority="1" from="meaning">input name</note>
+      </trans-unit>
+      <trans-unit id="ConfirmPassword" datatype="html">
+        <source> Confirm Password:</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/@auth/components/register/register.component.html</context>
+          <context context-type="linenumber">76</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/@auth/components/reset-password/reset-password.component.html</context>
+          <context context-type="linenumber">45</context>
+        </context-group>
+        <note priority="1" from="description">Confirm Password</note>
+        <note priority="1" from="meaning">Confirm Password</note>
+      </trans-unit>
+      <trans-unit id="PasswordAndConfirmPasswordDoesNotMatch" datatype="html">
+        <source>
+        Password and confirm password does not match!
+    </source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/@auth/components/register/register.component.html</context>
+          <context context-type="linenumber">91</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/@auth/components/reset-password/reset-password.component.html</context>
+          <context context-type="linenumber">59</context>
+        </context-group>
+        <note priority="1" from="description">Password and confirm password does not match</note>
+        <note priority="1" from="meaning">Password and confirm password does not match</note>
+      </trans-unit>
+      <trans-unit id="AgreeTo" datatype="html">
+        <source>Agree to</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/@auth/components/register/register.component.html</context>
+          <context context-type="linenumber">98</context>
+        </context-group>
+        <note priority="1" from="description">Agree to</note>
+        <note priority="1" from="meaning">Agree to</note>
+      </trans-unit>
+      <trans-unit id="TermsAndConditions" datatype="html">
+        <source>Terms &amp; Conditions</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/@auth/components/register/register.component.html</context>
+          <context context-type="linenumber">98</context>
+        </context-group>
+        <note priority="1" from="description">Terms and Conditions</note>
+        <note priority="1" from="meaning">Terms and Conditions</note>
+      </trans-unit>
+      <trans-unit id="AlreadyHaveAnAccount" datatype="html">
+        <source>Already have an account?</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/@auth/components/register/register.component.html</context>
+          <context context-type="linenumber">134</context>
+        </context-group>
+        <note priority="1" from="description">Already have an account</note>
+        <note priority="1" from="meaning">Already have an account</note>
+      </trans-unit>
+      <trans-unit id="ResetPasswordSubtitle" datatype="html">
+        <source>Enter your email address and we’ll send a link to reset your password</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/@auth/components/request-password/request-password.component.html</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+        <note priority="1" from="description">An sub-title for ResetPassword</note>
+        <note priority="1" from="meaning">ResetPassword sub-title</note>
+      </trans-unit>
+      <trans-unit id="RequestPassword" datatype="html">
+        <source>Request password</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/@auth/components/request-password/request-password.component.html</context>
+          <context context-type="linenumber">49</context>
+        </context-group>
+        <note priority="1" from="description">Request password</note>
+        <note priority="1" from="meaning">Request password</note>
+      </trans-unit>
+      <trans-unit id="ChangePasswordTitle" datatype="html">
+        <source>Change password</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/@auth/components/reset-password/reset-password.component.html</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+        <note priority="1" from="description">Change password title</note>
+        <note priority="1" from="meaning">Change password title</note>
+      </trans-unit>
+      <trans-unit id="ChangePasswordSubtitle" datatype="html">
+        <source>Please set a new password</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/@auth/components/reset-password/reset-password.component.html</context>
+          <context context-type="linenumber">8</context>
+        </context-group>
+        <note priority="1" from="description">Change password subtitle</note>
+        <note priority="1" from="meaning">Change password subtitle</note>
+      </trans-unit>
+      <trans-unit id="ChangePassword" datatype="html">
+        <source>Change password</source>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/@auth/components/reset-password/reset-password.component.html</context>
+          <context context-type="linenumber">67</context>
+        </context-group>
+        <note priority="1" from="description">Change password button</note>
+        <note priority="1" from="meaning">Change password button</note>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

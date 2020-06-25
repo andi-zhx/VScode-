@@ -1,0 +1,94 @@
+<!--
+  ~ Copyright (c) Akveo 2019. All Rights Reserved.
+  ~ Licensed under the Single Application / Multi Application License.
+  ~ See LICENSE_SINGLE_APP / LICENSE_MULTI_APP in the 'docs' folder for license information on type of purchased license.
+  -->
+
+<h1 i18n="Login welcome|An introduction header for Login@@LoginTitle" id="title" class="title">Login</h1>
+<p i18n="Login sub-title|An sub-title for Login@@LoginSubtitle" class="sub-title">Hello! Log in with your email.</p>
+
+<nb-alert *ngIf="showMessages.error && errors?.length && !submitted" outline="danger" role="alert">
+  <p class="alert-title"><b><ng-container i18n="Login error message|An message for error Login@@AlertErrorMessage">Oh snap!</ng-container></b></p>
+  <ul class="alert-message-list">
+    <li *ngFor="let error of errors" class="alert-message"><span i18n="Login error tip|An tip for Login fail@@LoginErrorTip">{error, select, Login/Email combination is not correct, please try again.{Login/Email combination is not correct, please try again.}}</span></li>
+  </ul>
+</nb-alert>
+
+<nb-alert *ngIf="showMessages.success && messages?.length && !submitted" outline="success" role="alert">
+  <p class="alert-title"><b><ng-container i18n="Login success message|An message for successful Login@@AlertSuccessMessage">Hooray!</ng-container></b></p>
+  <ul class="alert-message-list">
+    <li *ngFor="let message of messages" class="alert-message">{{ message }}</li>
+  </ul>
+</nb-alert>
+
+<div [formGroup]="loginForm" aria-labelledby="title">
+  <div class="form-control-group">
+    <label  i18n="Email address|Email address label@@emailAddress" for="input-email">Email address:</label>
+    <input  nbInput
+            fullWidth
+            id="input-email"
+            formControlName="email"
+            [status]="email.dirty ? (email.invalid  ? 'danger' : 'success') : ''"
+            [attr.aria-invalid]="email.invalid && email.touched ? true : null"
+            placeholder="Email address">
+    <ngx-validation-message label="Email address" [showPattern]="email?.hasError('pattern') && email.touched"
+      [showRequired]="email?.errors?.required && email.touched"></ngx-validation-message>
+  </div>
+
+  <div class="form-control-group">
+    <span class="label-with-link">
+      <label class="label" for="input-password" i18n="password|password@@Password">Password:</label>
+      <a i18n="Forgot password|Forgot password?@@ForgotPass" class="forgot-password caption-2" routerLink="../request-password">Forgot Password?</a>
+    </span>
+    <input  nbInput
+            fullWidth
+            id="input-password"
+            formControlName="password"
+            type="password"
+            [status]="password.dirty ? (password.invalid  ? 'danger' : 'success') : ''"
+            placeholder="Password">
+    <ngx-validation-message label="Password" [showMinLength]="password?.hasError('minlength') && password.touched"
+      [showMaxLength]="password?.hasError('maxlength') && password.touched"
+      [showRequired]="password?.errors?.required && password.touched"
+      [minLength]="minLength"
+      [maxLength]="maxLength"></ngx-validation-message>
+  </div>
+
+  <div class="form-control-group accept-group">
+    <nb-checkbox formControlName="rememberMe" name="rememberMe" *ngIf="rememberMe" i18n="Remember Me|Remember Me@@RememberMe">Remember me</nb-checkbox>
+  </div>
+
+  <button nbButton fullWidth status="primary" size="large"
+  (click)="login()" [disabled]="submitted || !loginForm.valid"
+    [class.btn-pulse]="submitted">
+    <ng-container i18n="Login button|login button@@Login">Log In</ng-container>
+  </button>
+</div>
+
+<section *ngIf="socialLinks && socialLinks.length > 0" class="links" aria-label="Social sign in">
+  <span i18n="or enter with|or enter with@@OrEnterWith">or enter with:</span>
+  <div class="socials">
+    <ng-container *ngFor="let socialLink of socialLinks">
+      <a *ngIf="socialLink.link"
+         [routerLink]="socialLink.link"
+         [attr.target]="socialLink.target"
+         [attr.class]="socialLink.icon"
+         [class.with-icon]="socialLink.icon">
+        <nb-icon *ngIf="socialLink.icon; else title" [icon]="socialLink.icon"></nb-icon>
+        <ng-template #title>{{ socialLink.title }}</ng-template>
+      </a>
+      <a *ngIf="socialLink.url"
+         [attr.href]="socialLink.url"
+         [attr.target]="socialLink.target"
+         [attr.class]="socialLink.icon"
+         [class.with-icon]="socialLink.icon">
+        <nb-icon *ngIf="socialLink.icon; else title" [icon]="socialLink.icon"></nb-icon>
+        <ng-template #title>{{ socialLink.title }}</ng-template>
+      </a>
+    </ng-container>
+  </div>
+</section>
+
+<section class="another-action" aria-label="Register">
+  <span i18n="Don't have an account|Don't have an account@@DontHaveAnAccount">Don't have an account? </span><a class="text-link" routerLink="../register" i18n="Register link|Register link @@Register">Register</a>
+</section>
